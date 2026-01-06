@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: servarr
+  labels:
+    environment: prod
+    name: servarr
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"

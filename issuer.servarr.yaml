@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: vault-issuer
+  namespace: servarr
+  annotations:
+    avp.kubernetes.io/path: "argocd/data/argocd-vault-plugin/vault"
+spec:
+  vault:
+    server: <vault_url>  # Update with your Vault URL
+    path: <pki_sign_int_path>          # Update with your PKI path
+    auth:
+      kubernetes:
+        mountPath: /v1/auth/kubernetes
+        role: cert-manager  # Your existing Vault role
+        serviceAccountRef:
+          name: cert-manager  # References the ServiceAccount above

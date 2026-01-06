@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: lidarr
+    environment: prod
+  name: prod-lidarr
+  namespace: servarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lidarr
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: lidarr
+    spec:
+      containers:
+      - env:
+        - name: PUID
+          valueFrom:
+            configMapKeyRef:
+              key: PUID
+              name: servarr-config
+        - name: PGID
+          valueFrom:
+            configMapKeyRef:
+              key: PGID
+              name: servarr-config
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              key: TZ
+              name: servarr-config
+        - name: LIDARR__APP__INSTANCENAME
+          value: "lidarr"
+        - name: LIDARR__APP__THEME
+          value: "dark"
+        - name: LIDARR__AUTH__APIKEY
+          value: <path:argocd/data/argocd-vault-plugin/lidarr/api_key>
+        - name: LIDARR__AUTH__ENABLED
+          value: "true"
+        - name: LIDARR__AUTH__METHOD
+          value: "External"
+        - name: LIDARR__AUTH__REQUIRED
+          value: "true"
+        - name: LIDARR__LOG__ANALYTICSENABLED
+          value: "false"
+        - name: LIDARR__POSTGRES__USER
+          value: <path:argocd/data/argocd-vault-plugin/lidarr/db_user>
+        - name: LIDARR__POSTGRES__PASSWORD
+          value: <path:argocd/data/argocd-vault-plugin/lidarr/db_password>
+        - name: LIDARR__SERVER__URLBASE
+          value: "/lidarr"
+        - name: LIDARR__SERVER__BINDADDRESS
+          value: "*"
+        - name: LIDARR__SERVER__PORT
+          value: "9696"
+        - name: LIDARR__UPDATE__MECHANISM
+          value: "Docker"
+        - name: LIDARR__SERVER__PROXYENABLE
+          value: "true"
+        - name: LIDARR__SERVER__ENABLESSL
+          value: "false"
+        image: lscr.io/linuxserver/lidarr:latest
+        name: lidarr
+        ports:
+        - containerPort: 9696
+          name: http
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - mountPath: /data/media/music
+          name: music
+        - mountPath: /downloads
+          name: downloads
+        imagePullPolicy: IfNotPresent
+      securityContext:
+        fsGroup: 1000
+        runAsGroup: 1000
+        runAsUser: 1000
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: prod-lidarr-config
+      - name: music
+        persistentVolumeClaim:
+          claimName: prod-media-music
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: prod-downloads

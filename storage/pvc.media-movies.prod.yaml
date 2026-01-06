@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: servarr
+    environment: prod
+    media-type: movies
+  name: prod-media-movies
+  namespace: servarr
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Ti
+  selector:
+    matchLabels:
+      app: servarr
+      environment: prod
+      type: nfs
+      media-type: movies

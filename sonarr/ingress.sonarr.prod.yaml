@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sonarr-ingress
+  namespace: servarr
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/issuer: "vault-issuer"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+    avp.kubernetes.io/path: "argocd/data/argocd-vault-plugin/servarr"
+spec:
+  tls:
+  - hosts:
+    - <sonarr_url>
+    secretName: servarr-tls-secret
+  rules:
+  - host: <sonarr_url>
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prod-sonarr
+            port:
+              number: 8989

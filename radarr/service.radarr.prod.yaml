@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: radarr
+    environment: prod
+  name: prod-radarr
+  namespace: servarr
+spec:
+  ports:
+  - name: http
+    port: 7878
+    protocol: TCP
+    targetPort: 7878
+  selector:
+    app: radarr
+  type: ClusterIP

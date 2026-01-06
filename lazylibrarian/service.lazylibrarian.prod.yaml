@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: lazylibrarian
+    environment: prod
+  name: prod-lazylibrarian
+  namespace: servarr
+spec:
+  type: ClusterIP
+  selector:
+    app: lazylibrarian
+  ports:
+  - name: http
+    port: 5299
+    protocol: TCP
+    targetPort: 5299

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    app: jellyseerr
+    environment: prod
+    type: nfs
+  name: prod-jellyseerr-config-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 2Gi
+  nfs:
+    path: /mnt/MainPool/k8s-storage/servarr/jellyseerr
+    server: 10.0.0.200

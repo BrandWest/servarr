@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: servarr-tls
+  namespace: servarr
+spec:
+  secretName: servarr-tls-secret
+  issuerRef:
+    name: vault-issuer
+    kind: Issuer
+  commonName: <path:argocd/data/argocd-vault-plugin/network#wildcard_domain>
+  dnsNames:
+  - <path:argocd/data/argocd-vault-plugin/servarr#sonarr_url>
+  - <path:argocd/data/argocd-vault-plugin/servarr#radarr_url>
+  - <path:argocd/data/argocd-vault-plugin/servarr#prowlarr_url>
+  - <path:argocd/data/argocd-vault-plugin/servarr#bazarr_url>
+  - <path:argocd/data/argocd-vault-plugin/servarr#qbittorrent_url>
+  - <path:argocd/data/argocd-vault-plugin/servarr#jellyseerr_url>
+  - <path:argocd/data/argocd-vault-plugin/servarr#lidarr_url>
+  - <path:argocd/data/argocd-vault-plugin/servarr#lazylibrarian_url>
+  - <path:argocd/data/argocd-vault-plugin/network#wildcard_domain>

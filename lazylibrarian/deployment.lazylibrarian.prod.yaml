@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: lazylibrarian
+    environment: prod
+  name: prod-lazylibrarian
+  namespace: servarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lazylibrarian
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: lazylibrarian
+    spec:
+      containers:
+      - name: lazylibrarian
+        image: lscr.io/linuxserver/lazylibrarian:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5299
+          name: http
+
+        env:
+        - name: PUID
+          valueFrom:
+            configMapKeyRef:
+              name: servarr-config
+              key: PUID
+        - name: PGID
+          valueFrom:
+            configMapKeyRef:
+              name: servarr-config
+              key: PGID
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: servarr-config
+              key: TZ
+        # LazyLibrarian-specific
+        - name: DOCKER_MODS
+          value: "linuxserver/mods:universal-cron"
+
+        # Reverse proxy awareness
+        - name: BASE_URL
+          value: "/lazylibrarian"
+
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
+
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: books
+          mountPath: /books
+        - name: downloads
+          mountPath: /downloads
+
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: prod-lazylibrarian-config
+      - name: books
+        persistentVolumeClaim:
+          claimName: prod-books
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: prod-downloads

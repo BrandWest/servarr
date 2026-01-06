@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: bazarr
+    environment: prod
+    type: nfs
+  name: prod-bazarr-config
+  namespace: servarr
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  selector:
+    matchLabels:
+      app: bazarr
+      environment: prod
+      type: nfs
+  storageClassName: ''
+  volumeMode: Filesystem

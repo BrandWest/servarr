@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: servarr
+    environment: prod
+    media-type: music
+  name: prod-media-music
+  namespace: servarr
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 200Gi
+  selector:
+    matchLabels:
+      app: servarr
+      environment: prod
+      type: nfs
+      media-type: music

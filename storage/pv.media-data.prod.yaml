@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    app: servarr
+    environment: prod
+    type: nfs
+  name: prod-media-data-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 2Ti
+  nfs:
+    path: /mnt/MainPool/k8s-storage/servarr/media
+    server: 10.0.0.200

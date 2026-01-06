@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sonarr
+    environment: prod
+  name: prod-sonarr
+  namespace: servarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonarr
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      containers:
+      - env:
+        - name: PUID
+          valueFrom:
+            configMapKeyRef:
+              key: PUID
+              name: servarr-config
+        - name: PGID
+          valueFrom:
+            configMapKeyRef:
+              key: PGID
+              name: servarr-config
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              key: TZ
+              name: servarr-config
+        - name: SONARR__APP__INSTANCENAME
+          value: "sonarr"
+        - name: SONARR__APP__THEME
+          value: "dark"
+        - name: SONARR__AUTH__APIKEY
+          value: <path:argocd/data/argocd-vault-plugin/sonarr/api_key>
+        - name: SONARR__AUTH__ENABLED
+          value: "true"
+        - name: SONARR__AUTH__METHOD
+          value: "External"
+        - name: SONARR__AUTH__REQUIRED
+          value: "true"
+        - name: SONARR__LOG__ANALYTICSENABLED
+          value: "false"
+        - name: SONARR__POSTGRES__USER
+          value: <path:argocd/data/argocd-vault-plugin/sonarr/db_user>
+        - name: SONARR__POSTGRES__PASSWORD
+          value: <path:argocd/data/argocd-vault-plugin/sonarr/db_password>
+        - name: SONARR__SERVER__URLBASE
+          value: "/sonarr"
+        - name: SONARR__SERVER__BINDADDRESS
+          value: "*"
+        - name: SONARR__SERVER__PORT
+          value: "8989"
+        - name: SONARR__UPDATE__MECHANISM
+          value: "Docker"
+        - name: SONARR__SERVER__PROXYENABLE
+          value: "true"
+        - name: SONARR__SERVER__ENABLESSL
+          value: "false"
+        image: lscr.io/linuxserver/sonarr:latest
+        name: sonarr
+        ports:
+        - containerPort: 8989
+          name: http
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - mountPath: /data/media/tv
+          name: tv
+        - mountPath: /downloads
+          name: downloads
+        imagePullPolicy: IfNotPresent
+      securityContext:
+        fsGroup: 1000
+        runAsGroup: 1000
+        runAsUser: 1000
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: prod-sonarr-config
+      - name: tv
+        persistentVolumeClaim:
+          claimName: prod-media-tv
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: prod-downloads

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    app: servarr
+    environment: prod
+    type: nfs
+    media-type: books
+  name: prod-media-books-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 200Gi
+  nfs:
+    path: /mnt/MainPool/k8s-storage/servarr/media/books
+    server: 10.0.0.200
