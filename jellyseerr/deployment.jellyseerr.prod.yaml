@@ -58,9 +58,9 @@ spec:
           name: config
         imagePullPolicy: IfNotPresent
       securityContext:
-        fsGroup: 1000
-        runAsGroup: 1000
-        runAsUser: 1000
+        fsGroup: 3000
+        runAsGroup: 3000
+        runAsUser: 3000
       volumes:
       - name: config
         persistentVolumeClaim:

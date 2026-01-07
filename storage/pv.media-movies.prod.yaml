@@ -12,6 +12,8 @@ spec:
   - ReadWriteMany
   capacity:
     storage: 1Ti
+  storageClassName: ""
+  persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /mnt/MainPool/k8s-storage/servarr/media/movies
     server: 10.0.0.200

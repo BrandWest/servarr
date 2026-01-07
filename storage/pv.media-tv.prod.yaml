@@ -12,6 +12,8 @@ spec:
   - ReadWriteMany
   capacity:
     storage: 500Gi
+  storageClassName: ""
+  persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /mnt/MainPool/k8s-storage/servarr/media/tv
     server: 10.0.0.200

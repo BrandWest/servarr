@@ -19,3 +19,5 @@ spec:
       environment: prod
       type: nfs
       media-type: photos
+  storageClassName: ''
+  volumeMode: Filesystem

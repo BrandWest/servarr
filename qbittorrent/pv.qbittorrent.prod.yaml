@@ -11,6 +11,8 @@ spec:
   - ReadWriteOnce
   capacity:
     storage: 5Gi
+  storageClassName: ""
+  persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /mnt/MainPool/k8s-storage/servarr/qbittorrent
     server: 10.0.0.200
