@@ -53,8 +53,6 @@ spec:
           value: <path:argocd/data/argocd-vault-plugin/lidarr/db_user>
         - name: LIDARR__POSTGRES__PASSWORD
           value: <path:argocd/data/argocd-vault-plugin/lidarr/db_password>
-        - name: LIDARR__SERVER__URLBASE
-          value: "/lidarr"
         - name: LIDARR__SERVER__BINDADDRESS
           value: "*"
         - name: LIDARR__SERVER__PORT

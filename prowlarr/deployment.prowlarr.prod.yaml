@@ -53,8 +53,6 @@ spec:
           value: <path:argocd/data/argocd-vault-plugin/prowlarr/db_user>
         - name: PROWLARR__POSTGRES__PASSWORD
           value: <path:argocd/data/argocd-vault-plugin/prowlarr/db_password>
-        - name: PROWLARR__SERVER__URLBASE
-          value: "/prowlarr"
         - name: PROWLARR__SERVER__BINDADDRESS
           value: "*"
         - name: PROWLARR__SERVER__PORT

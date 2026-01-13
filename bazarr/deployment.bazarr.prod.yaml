@@ -53,12 +53,10 @@ spec:
           value: <path:argocd/data/argocd-vault-plugin/bazarr/db_user>
         - name: BAZARR__POSTGRES__PASSWORD
           value: <path:argocd/data/argocd-vault-plugin/bazarr/db_password>
-        - name: BAZARR__SERVER__URLBASE
-          value: "/bazarr"
         - name: BAZARR__SERVER__BINDADDRESS
           value: "*"
         - name: BAZARR__SERVER__PORT
-          value: "9696"
+          value: "6767"
         - name: BAZARR__UPDATE__MECHANISM
           value: "Docker"
         - name: BAZARR__SERVER__PROXYENABLE

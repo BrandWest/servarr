@@ -53,8 +53,6 @@ spec:
           value: <path:argocd/data/argocd-vault-plugin/radarr/db_user>
         - name: RADARR__POSTGRES__PASSWORD
           value: <path:argocd/data/argocd-vault-plugin/radarr/db_password>
-        - name: RADARR__SERVER__URLBASE
-          value: "/radarr"
         - name: RADARR__SERVER__BINDADDRESS
           value: "*"
         - name: RADARR__SERVER__PORT

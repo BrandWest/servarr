@@ -42,14 +42,9 @@ spec:
             configMapKeyRef:
               name: servarr-config
               key: TZ
-        # LazyLibrarian-specific
+        # LazykeyLibrarian-specific
         - name: DOCKER_MODS
           value: "linuxserver/mods:universal-cron"
-
-        # Reverse proxy awareness
-        - name: BASE_URL
-          value: "/lazylibrarian"
-
         resources:
           limits:
             cpu: 500m
