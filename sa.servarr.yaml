@@ -11,7 +11,7 @@ kind: ClusterRole
 metadata:
   name: cert-manager-servarr
   annotations:
-    avp.kubernetes.io/path: "argocd/data/argocd-vault-plugin/servarr"
+    avp.kubernetes.io/path: "secret/data/apps/servarr"
 rules:
 - apiGroups: [""]
   resources: ["secrets"]

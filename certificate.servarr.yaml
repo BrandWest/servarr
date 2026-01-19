@@ -10,12 +10,12 @@ spec:
     kind: Issuer
   commonName: <path:argocd/data/argocd-vault-plugin/network#wildcard_domain>
   dnsNames:
-  - <path:argocd/data/argocd-vault-plugin/servarr#sonarr_url>
-  - <path:argocd/data/argocd-vault-plugin/servarr#radarr_url>
-  - <path:argocd/data/argocd-vault-plugin/servarr#prowlarr_url>
-  - <path:argocd/data/argocd-vault-plugin/servarr#bazarr_url>
-  - <path:argocd/data/argocd-vault-plugin/servarr#qbittorrent_url>
-  - <path:argocd/data/argocd-vault-plugin/servarr#jellyseerr_url>
-  - <path:argocd/data/argocd-vault-plugin/servarr#lidarr_url>
-  - <path:argocd/data/argocd-vault-plugin/servarr#lazylibrarian_url>
+  - <path:secret/data/apps/servarr#sonarr_url>
+  - <path:secret/data/apps/servarr#radarr_url>
+  - <path:secret/data/apps/servarr#prowlarr_url>
+  - <path:secret/data/apps/servarr#bazarr_url>
+  - <path:secret/data/apps/servarr#qbittorrent_url>
+  - <path:secret/data/apps/servarr#jellyseerr_url>
+  - <path:secret/data/apps/servarr#lidarr_url>
+  - <path:secret/data/apps/servarr#lazylibrarian_url>
   - <path:argocd/data/argocd-vault-plugin/network#wildcard_domain>
