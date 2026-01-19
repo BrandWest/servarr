@@ -4,7 +4,7 @@ metadata:
   name: vault-issuer
   namespace: servarr
   annotations:
-    avp.kubernetes.io/path: "argocd/data/argocd-vault-plugin/vault"
+    avp.kubernetes.io/path: "secret/data/infra/wazuh"
 spec:
   vault:
     server: <vault_url>  # Update with your Vault URL
