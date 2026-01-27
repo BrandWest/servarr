@@ -12,6 +12,6 @@ spec:
     auth:
       kubernetes:
         mountPath: /v1/auth/kubernetes
-        role: k8s-internal
+        role: cert-manager-pki
         serviceAccountRef:
           name: cert-manager-servarr
