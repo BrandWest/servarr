@@ -10,12 +10,12 @@ spec:
     kind: Issuer
   commonName: <path:secret/data/infra/network/prod#wildcard_domain_styx>
   dnsNames:
-  - <path:secret/data/apps/servarr/prod#sonarr_url>
-  - <path:secret/data/apps/servarr/prod#radarr_url>
-  - <path:secret/data/apps/servarr/prod#prowlarr_url>
-  - <path:secret/data/apps/servarr/prod#bazarr_url>
-  - <path:secret/data/apps/servarr/prod#qbittorrent_url>
-  - <path:secret/data/apps/servarr/prod#jellyseerr_url>
-  - <path:secret/data/apps/servarr/prod#lidarr_url>
-  - <path:secret/data/apps/servarr/prod#lazylibrarian_url>
+  - <path:secret/data/apps/servarr/sonarr/prod#sonarr_url>
+  - <path:secret/data/apps/servarr/radarr/prod#radarr_url>
+  - <path:secret/data/apps/servarr/prowlarr/prod#prowlarr_url>
+  - <path:secret/data/apps/servarr/bazarr/prod#bazarr_url>
+  - <path:secret/data/apps/servarr/qbittorrent/prod#qbittorrent_url>
+  - <path:secret/data/apps/servarr/jellyseerr/prod#jellyseerr_url>
+  - <path:secret/data/apps/servarr/lidarr/prod#lidarr_url>
+  - <path:secret/data/apps/servarr/lazylibrarian/prod#lazylibrarian_url>
   - <path:secret/data/infra/network/prod#wildcard_domain_styx>
