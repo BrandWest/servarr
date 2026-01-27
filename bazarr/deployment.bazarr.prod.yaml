@@ -83,6 +83,8 @@ spec:
         - mountPath: /data/media/movies
           name: movies
         imagePullPolicy: IfNotPresent
+      nodeSelector:
+        kubernetes.io/arch: amd64
       securityContext:
         fsGroup: 3000
         runAsGroup: 3000
