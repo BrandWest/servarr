@@ -78,13 +78,10 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-          subPath: /servarr/bazarr/config
         - mountPath: /data/media/tv
           name: tv
-          subPath: /servarr/media/tv
         - mountPath: /data/media/movies
           name: movies
-          subPath: /servarr/media/movies
         imagePullPolicy: IfNotPresent
       nodeSelector:
         kubernetes.io/arch: amd64
