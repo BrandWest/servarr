@@ -12,6 +12,6 @@ spec:
     auth:
       kubernetes:
         mountPath: /v1/auth/kubernetes
-        role: cert-manager  # Your existing Vault role
+        role: k8s-internal
         serviceAccountRef:
-          name: cert-manager  # References the ServiceAccount above
+          name: cert-manager-servarr
