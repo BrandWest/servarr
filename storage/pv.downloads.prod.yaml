@@ -13,6 +13,8 @@ spec:
     storage: 500Gi
   storageClassName: ""
   persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+  - nfsvers=4
   nfs:
     path: /mnt/MainPool/k8s-storage/servarr/downloads
-    server: truenas.diagon.ally
+    server: 10.0.0.200
