@@ -40,7 +40,7 @@ spec:
         - name: RADARR__APP__THEME
           value: "dark"
         - name: RADARR__AUTH__APIKEY
-          value: <path:secret/data/apps/sevarr/radarr/prod#api_key>
+          value: <path:secret/data/apps/servarr/radarr/prod#api_key>
         - name: RADARR__AUTH__ENABLED
           value: "true"
         - name: RADARR__AUTH__METHOD
@@ -50,9 +50,9 @@ spec:
         - name: RADARR__LOG__ANALYTICSENABLED
           value: "false"
         - name: RADARR__POSTGRES__USER
-          value: <path:secret/data/apps/sevarr/radarr/prod#db_user>
+          value: <path:secret/data/apps/servarr/radarr/prod#db_user>
         - name: RADARR__POSTGRES__PASSWORD
-          value: <path:secret/data/apps/sevarr/radarr/prod#db_password>
+          value: <path:secret/data/apps/servarr/radarr/prod#db_password>
         - name: RADARR__SERVER__BINDADDRESS
           value: "*"
         - name: RADARR__SERVER__PORT

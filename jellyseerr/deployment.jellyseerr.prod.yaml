@@ -36,11 +36,11 @@ spec:
               key: TZ
               name: servarr-config
         - name: API_KEY
-          value: <path:secret/data/apps/sevarr/jellyseerr/prod#api_key>
+          value: <path:secret/data/apps/servarr/jellyseerr/prod#api_key>
         - name: DB_USER
-          value: <path:secret/data/apps/sevarr/jellyseerr/prod#db_user>
+          value: <path:secret/data/apps/servarr/jellyseerr/prod#db_user>
         - name: DB_PASS
-          value: <path:secret/data/apps/sevarr/jellyseerr/prod#db_password>
+          value: <path:secret/data/apps/servarr/jellyseerr/prod#db_password>
         image: fallenbagel/jellyseerr:latest
         name: jellyseerr
         ports:
