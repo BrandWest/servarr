@@ -15,7 +15,7 @@ spec:
   storageClassName: ""
   persistentVolumeReclaimPolicy: Retain
   mountOptions:
-  - nfsvers=4
+  - nfsvers=4.2
   nfs:
-    path: /mnt/MainPool/k8s-storage/servarr/media/tv
+    path: /mnt/MainPool/k8s-storage
     server: 10.0.0.200
