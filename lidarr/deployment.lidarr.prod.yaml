@@ -40,7 +40,7 @@ spec:
         - name: LIDARR__APP__THEME
           value: "dark"
         - name: LIDARR__AUTH__APIKEY
-          value: <path:argocd/data/argocd-vault-plugin/lidarr/api_key>
+          value: <path:secret/data/apps/sevarr/lidarr/prod#api_key>
         - name: LIDARR__AUTH__ENABLED
           value: "true"
         - name: LIDARR__AUTH__METHOD
@@ -50,9 +50,9 @@ spec:
         - name: LIDARR__LOG__ANALYTICSENABLED
           value: "false"
         - name: LIDARR__POSTGRES__USER
-          value: <path:argocd/data/argocd-vault-plugin/lidarr/db_user>
+          value: <path:secret/data/apps/sevarr/lidarr/prod#db_user>
         - name: LIDARR__POSTGRES__PASSWORD
-          value: <path:argocd/data/argocd-vault-plugin/lidarr/db_password>
+          value: <path:secret/data/apps/sevarr/lidarr/prod#db_password>
         - name: LIDARR__SERVER__BINDADDRESS
           value: "*"
         - name: LIDARR__SERVER__PORT

@@ -40,7 +40,7 @@ spec:
         - name: BAZARR__APP__THEME
           value: "dark"
         - name: BAZARR__AUTH__APIKEY
-          value: <path:argocd/data/argocd-vault-plugin/bazarr/api_key>
+          value: <path:secret/data/apps/servarr/bazarr/prod#api_key>
         - name: BAZARR__AUTH__ENABLED
           value: "true"
         - name: BAZARR__AUTH__METHOD
@@ -50,9 +50,9 @@ spec:
         - name: BAZARR__LOG__ANALYTICSENABLED
           value: "false"
         - name: BAZARR__POSTGRES__USER
-          value: <path:argocd/data/argocd-vault-plugin/bazarr/db_user>
+          value: <path:secret/data/apps/servarr/bazarr/prod#db_user>
         - name: BAZARR__POSTGRES__PASSWORD
-          value: <path:argocd/data/argocd-vault-plugin/bazarr/db_password>
+          value: <path:secret/data/apps/servarr/bazarr/prod#db_password>
         - name: BAZARR__SERVER__BINDADDRESS
           value: "*"
         - name: BAZARR__SERVER__PORT

@@ -10,7 +10,7 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
     nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
-    avp.kubernetes.io/path: "secret/data/apps/servarr"
+    avp.kubernetes.io/path: "secret/data/apps/servarr/jellyseerr/prod"
 spec:
   tls:
   - hosts:
