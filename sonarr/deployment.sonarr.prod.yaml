@@ -52,7 +52,7 @@ spec:
         - name: SONARR__POSTGRES__USER
           value: <path:secret/data/apps/servarr/sonarr/prod#db_user>
         - name: SONARR__POSTGRES__PASSWORD
-          value: <path:secret/data/apps/servarr/sonarrprod#db_password>
+          value: <path:secret/data/apps/servarr/sonarr/prod#db_password>
         - name: SONARR__SERVER__BINDADDRESS
           value: "*"
         - name: SONARR__SERVER__PORT
