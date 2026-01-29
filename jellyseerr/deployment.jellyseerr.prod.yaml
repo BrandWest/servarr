@@ -41,6 +41,8 @@ spec:
           value: <path:secret/data/apps/servarr/jellyseerr/prod#db_user>
         - name: DB_PASS
           value: <path:secret/data/apps/servarr/jellyseerr/prod#db_password>
+        - name: NODE_EXTRA_CA_CERTS
+          value: /etc/ssl/custom/ca-bundle.crt
         image: fallenbagel/jellyseerr:latest
         name: jellyseerr
         ports:
@@ -56,6 +58,9 @@ spec:
         volumeMounts:
         - mountPath: /app/config
           name: config
+        - mountPath: /etc/ssl/custom
+          name: ca-certs
+          readOnly: true
         imagePullPolicy: IfNotPresent
       nodeSelector:
         kubernetes.io/arch: amd64
@@ -67,3 +72,6 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: prod-jellyseerr-config
+      - name: ca-certs
+        configMap:
+          name: internal-ca-bundle

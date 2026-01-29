@@ -63,6 +63,8 @@ spec:
           value: "true"
         - name: LIDARR__SERVER__ENABLESSL
           value: "false"
+        - name: SSL_CERT_FILE
+          value: /etc/ssl/custom/ca-bundle.crt
         image: lscr.io/linuxserver/lidarr:latest
         name: lidarr
         ports:
@@ -82,6 +84,9 @@ spec:
           name: music
         - mountPath: /downloads
           name: downloads
+        - mountPath: /etc/ssl/custom
+          name: ca-certs
+          readOnly: true
         imagePullPolicy: IfNotPresent
       nodeSelector:
         kubernetes.io/arch: amd64
@@ -99,3 +104,6 @@ spec:
       - name: downloads
         persistentVolumeClaim:
           claimName: prod-downloads
+      - name: ca-certs
+        configMap:
+          name: internal-ca-bundle

@@ -39,8 +39,10 @@ spec:
           value: '8080'
         - name: QBT_LEGAL_NOTICE 
           value: "confirm"
-        - name: QBT_TORRENTING_PORT 
+        - name: QBT_TORRENTING_PORT
           value: "6881"
+        - name: SSL_CERT_FILE
+          value: /etc/ssl/custom/ca-bundle.crt
         image: lscr.io/linuxserver/qbittorrent:latest
         name: qbittorrent
         ports:
@@ -64,6 +66,9 @@ spec:
           name: config
         - mountPath: /downloads
           name: downloads
+        - mountPath: /etc/ssl/custom
+          name: ca-certs
+          readOnly: true
         imagePullPolicy: IfNotPresent
       nodeSelector:
         kubernetes.io/arch: amd64
@@ -78,3 +83,6 @@ spec:
       - name: downloads
         persistentVolumeClaim:
           claimName: prod-downloads
+      - name: ca-certs
+        configMap:
+          name: internal-ca-bundle

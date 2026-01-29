@@ -63,6 +63,8 @@ spec:
           value: "true"
         - name: PROWLARR__SERVER__ENABLESSL
           value: "false"
+        - name: SSL_CERT_FILE
+          value: /etc/ssl/custom/ca-bundle.crt
         image: lscr.io/linuxserver/prowlarr:latest
         name: prowlarr
         ports:
@@ -78,6 +80,9 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
+        - mountPath: /etc/ssl/custom
+          name: ca-certs
+          readOnly: true
         imagePullPolicy: IfNotPresent
       nodeSelector:
         kubernetes.io/arch: amd64
@@ -89,3 +94,6 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: prod-prowlarr-config
+      - name: ca-certs
+        configMap:
+          name: internal-ca-bundle
