@@ -68,10 +68,7 @@ spec:
 
       nodeSelector:
         kubernetes.io/arch: amd64
-      securityContext:
-        runAsUser: 3000
-        runAsGroup: 3000
-        fsGroup: 3000
+
 
       volumes:
       - name: config
