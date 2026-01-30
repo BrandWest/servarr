@@ -4,7 +4,7 @@ metadata:
   labels:
     app: qbittorrent
     environment: prod
-    type: nfs
+    type: local
   name: prod-qbittorrent-config
   namespace: servarr
 spec:
@@ -17,6 +17,6 @@ spec:
     matchLabels:
       app: qbittorrent
       environment: prod
-      type: nfs
+      type: local
   storageClassName: ''
   volumeMode: Filesystem

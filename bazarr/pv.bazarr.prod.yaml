@@ -4,7 +4,7 @@ metadata:
   labels:
     app: bazarr
     environment: prod
-    type: nfs
+    type: local
   name: prod-bazarr-config-pv
 spec:
   accessModes:
@@ -13,8 +13,14 @@ spec:
     storage: 2Gi
   storageClassName: ""
   persistentVolumeReclaimPolicy: Retain
-  mountOptions:
-  - nfsvers=4.2
-  nfs:
-    path: /mnt/MainPool/k8s-storage/servarr/bazarr
-    server: 10.0.0.200
+  hostPath:
+    path: /home/servarr/bazarr
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node4

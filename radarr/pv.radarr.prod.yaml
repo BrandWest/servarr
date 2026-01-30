@@ -4,7 +4,7 @@ metadata:
   labels:
     app: radarr
     environment: prod
-    type: nfs
+    type: local
   name: prod-radarr-config-pv
 spec:
   accessModes:
@@ -13,8 +13,14 @@ spec:
     storage: 5Gi
   storageClassName: ""
   persistentVolumeReclaimPolicy: Retain
-  mountOptions:
-  - nfsvers=4
-  nfs:
-    path: /mnt/MainPool/k8s-storage/servarr/radarr
-    server: 10.0.0.200
+  hostPath:
+    path: /home/servarr/radarr
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node4

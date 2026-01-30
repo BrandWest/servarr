@@ -15,6 +15,9 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   mountOptions:
   - nfsvers=4
+  - soft
+  - timeo=30
+  - retrans=2
   nfs:
     path: /mnt/MainPool/k8s-storage/servarr/downloads
     server: 10.0.0.200

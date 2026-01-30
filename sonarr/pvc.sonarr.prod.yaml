@@ -4,7 +4,7 @@ metadata:
   labels:
     app: sonarr
     environment: prod
-    type: nfs
+    type: local
   name: prod-sonarr-config
   namespace: servarr
 spec:
@@ -17,6 +17,6 @@ spec:
     matchLabels:
       app: sonarr
       environment: prod
-      type: nfs
+      type: local
   storageClassName: ''
   volumeMode: Filesystem
