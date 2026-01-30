@@ -43,7 +43,7 @@ spec:
           value: <path:secret/data/apps/servarr/jellyseerr/prod#db_password>
         - name: NODE_EXTRA_CA_CERTS
           value: /etc/ssl/custom/ca-bundle.crt
-        image: ghcr.io/seerr-team/seerr:2.7.3
+        image: ghcr.io/fallenbagel/jellyseerr:2.7.3
         name: jellyseerr
         ports:
         - containerPort: 5055
