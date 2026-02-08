@@ -8,14 +8,14 @@ spec:
   issuerRef:
     name: vault-issuer
     kind: Issuer
-  commonName: <path:secret/data/infra/network/prod#wildcard_domain_styx>
+  commonName: <path:secrets/data/infra/network/prod#wildcard_domain_styx>
   dnsNames:
-  - <path:secret/data/apps/servarr/sonarr/prod#sonarr_url>
-  - <path:secret/data/apps/servarr/radarr/prod#radarr_url>
-  - <path:secret/data/apps/servarr/prowlarr/prod#prowlarr_url>
-  - <path:secret/data/apps/servarr/bazarr/prod#bazarr_url>
-  - <path:secret/data/apps/servarr/qbittorrent/prod#qbittorrent_url>
-  - <path:secret/data/apps/servarr/jellyseerr/prod#jellyseerr_url>
-  - <path:secret/data/apps/servarr/lidarr/prod#lidarr_url>
-  - <path:secret/data/apps/servarr/lazylibrarian/prod#lazylibrarian_url>
-  - <path:secret/data/infra/network/prod#wildcard_domain_styx>
+  - <path:secrets/data/apps/servarr/sonarr/prod#sonarr_url>
+  - <path:secrets/data/apps/servarr/radarr/prod#radarr_url>
+  - <path:secrets/data/apps/servarr/prowlarr/prod#prowlarr_url>
+  - <path:secrets/data/apps/servarr/bazarr/prod#bazarr_url>
+  - <path:secrets/data/apps/servarr/qbittorrent/prod#qbittorrent_url>
+  - <path:secrets/data/apps/servarr/jellyseerr/prod#jellyseerr_url>
+  - <path:secrets/data/apps/servarr/lidarr/prod#lidarr_url>
+  - <path:secrets/data/apps/servarr/lazylibrarian/prod#lazylibrarian_url>
+  - <path:secrets/data/infra/network/prod#wildcard_domain_styx>

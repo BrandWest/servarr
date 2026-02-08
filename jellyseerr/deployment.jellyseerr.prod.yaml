@@ -36,11 +36,11 @@ spec:
               key: TZ
               name: servarr-config
         - name: API_KEY
-          value: <path:secret/data/apps/servarr/jellyseerr/prod#api_key>
+          value: <path:secrets/data/apps/servarr/jellyseerr/prod#api_key>
         - name: DB_USER
-          value: <path:secret/data/apps/servarr/jellyseerr/prod#db_user>
+          value: <path:secrets/data/apps/servarr/jellyseerr/prod#db_user>
         - name: DB_PASS
-          value: <path:secret/data/apps/servarr/jellyseerr/prod#db_password>
+          value: <path:secrets/data/apps/servarr/jellyseerr/prod#db_password>
         - name: NODE_EXTRA_CA_CERTS
           value: /etc/ssl/custom/ca-bundle.crt
         image: ghcr.io/fallenbagel/jellyseerr:2.7.3

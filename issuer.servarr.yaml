@@ -4,7 +4,7 @@ metadata:
   name: vault-issuer
   namespace: servarr
   annotations:
-    avp.kubernetes.io/path: "secret/data/infra/vault/prod"
+    avp.kubernetes.io/path: "secrets/data/infra/vault/prod"
 spec:
   vault:
     server: <vault_url>  # Update with your Vault URL
